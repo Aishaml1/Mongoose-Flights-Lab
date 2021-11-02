@@ -74,12 +74,12 @@ nav>a {
 }
 
 nav>a:visited {
-    color: #424748;
+    color: #000000;
 }
 
 nav>a:hover {
-    color: white;
-    background-color: #424748;
+    color: rgb(255, 255, 255);
+    background-color: #062b75c5;
 }
 
 nav>a.active {
@@ -88,4 +88,5 @@ nav>a.active {
 
 .fas::before {
     font-family: "Font Awesome 5 Free";
+    
 }

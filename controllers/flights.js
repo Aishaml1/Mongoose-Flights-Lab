@@ -28,8 +28,17 @@ function create(req, res) {
 }
 
 
+// want to find by id 
+function show(req, res) {
+    Flight.findById(req.params.id, function (err, flight) {
+        if (err) return res.redirect('/flights');
+    })
+}
+
+
 export {
     index,
     newFlight as new,
-    create
+    create,
+    show
 }
