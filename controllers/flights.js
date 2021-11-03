@@ -1,4 +1,5 @@
 import { Flight } from "../model/flight.js"
+import { Destination } from "../model/destination.js"
 
 
 function index(req, res) {
@@ -11,11 +12,6 @@ function index(req, res) {
     })
 }
 
-function newFlight(req, res) {
-    res.render("flights/new", {
-        title: "Add Flight",
-    })
-}
 function create(req, res) {
     const flight = new Flight(req.body)
     flight.save(function (err) {
@@ -27,18 +23,51 @@ function create(req, res) {
     })
 }
 
+function newFlight(req, res) {
+    res.render("flights/new", {
+        title: "Add Flight",
+    })
+}
 
-// want to find by id 
+
+
 function show(req, res) {
     Flight.findById(req.params.id, function (err, flight) {
-        if (err) return res.redirect('/flights');
+      res.render('flights/show', { 
+        title: `${flight.airline} Airline Details`,
+        flight: flight,
+      })
     })
+  }
+
+
+    function deleteFlight(req, res) {
+        Flight.findByIdAndDelete(req.params.id, function(err, flight) {
+          res.redirect("/flights")
+        })
+      }
+
+function addTicket(req, res) {
+    Flight.findById(req.params.id, function (error, flight) {
+        flight.tickets.push(req.body)
+        flight.save(function (err) {
+            res.redirect(`/flights/${flight._id}`)
+        })
+    })
+}
+
+function addToDestination(req, res){
+
 }
 
 
 export {
     index,
-    newFlight as new,
     create,
-    show
+    newFlight as new,
+    show,
+    deleteFlight as delete,
+    addTicket,
+    addToDestination
+
 }

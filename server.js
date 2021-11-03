@@ -12,6 +12,7 @@ import methodOverride from "method-override"
 
 import { router as flightsRouter } from "./routes/flights.js"
 import { router as indexRouter } from  "./routes/index.js"
+import { router as destinationsRouter } from "./routes/destinations.js"
 
 const app = express ()
 
@@ -37,7 +38,7 @@ app.use(methodOverride("_method"))
 // mounted routers
 app.use('/', indexRouter)
 app.use('/flights', flightsRouter)
-
+app.use('/destinations', destinationsRouter)
 // error handler
 app.use(function (err, req, res, next) {
     // set locals, only providing error in development

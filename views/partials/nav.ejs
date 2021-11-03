@@ -3,8 +3,14 @@
   <nav>
 		<i class="fas fa-plane"></i>
     <a 
+    href="/" <%- title === 'HOME' ? 'class="active"' : '' %>
+  >HOME</a>
+  <a 
+  href="/destinations/new" <%- title === 'ADD DESTINATION' ? 'class="active"' : '' %>
+>ADD DESTINATION</a>
+    <a 
       href="/flights/new" <%- title === 'ADD FLIGHT' ? 'class="active"' : '' %>
-    >ADD A FLIGHT</a>
+    >ADD FLIGHT</a>
     <a 
       href="/flights" <%- title === 'ALL FLIGHTS' ? 'class="active"' : '' %>
     >ALL FLIGHTS</a>

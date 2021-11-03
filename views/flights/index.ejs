@@ -1,8 +1,10 @@
 <%- include("../partials/html-head") %>
 
-<link rel="stylesheet" href="/stylesheets/movies/index.css">
+<link rel="stylesheet" href="/public/stylesheets/flights/index.css">
 
 <%- include("../partials/nav") %>
+
+
 <main>
 <h1>Flights List</h1>
 <table>
@@ -10,7 +12,7 @@
         <tr>
           <th>Flights Airline</th>
           <th>Airport</th>
-          <th>Flight No.</th>
+          <th>Flight Number</th>
           <th>Departure Date/Time</th>
       </tr>
     </thead>
@@ -21,12 +23,25 @@
           <td><%= f.airport %></td>
           <td><%= f.flightNo %></td>
           <td><%= f.departs %></td>
-          <td><a href="/flights/<%= f._id %>">Details</a></td>
+          <td>
+            <a href="/flights/<%= f._id %>">
+            Details
+          </a>
+          </td>
+          <td><form action="/flights/<%= f._id %>?_method=DELETE" method="POST">
+            <button type="submit">X</button>
+          </form></td>
         </tr>
       <% }) %>
     </tbody>
   </table>
 </main>
+
+
+
+
+
+    
 <%- include("../partials/footer") %>
 
 <!-- displays each flight’s airline, airport, flight no., and departure date/time. -->
